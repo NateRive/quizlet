@@ -1,0 +1,39 @@
+header {
+  height: 100px;
+  font-size: 30px;
+  line-height: 100px;
+  a {
+    color: white;
+    margin-right: 50px;
+  }
+  span {
+    margin-right: 50px;
+  }
+}
+
+
+.wrapper {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .left-content {
+    width: 25%;
+    color: red;
+    height: 1000px;
+    border-right: 1px solid gray;
+    float: left;
+  }
+  .right-content {
+    float: right;
+    width: 75%;
+    .subject {
+      border: 1px solid gray;
+      font-size: 20px;
+      padding-left: 20px;
+      margin: 0 30px;
+      margin-bottom: 20px;
+    }
+  }
+}

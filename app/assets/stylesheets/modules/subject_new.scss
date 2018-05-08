@@ -1,0 +1,89 @@
+$located_center: 0 60px;
+
+.subject_new_display {
+  width: 100%;
+  background-color: #eeeeee;
+  .make-subject {
+    background-color: white;
+    text-align: center;
+    margin: 0 40px 30px 60px;
+    #subject_title {
+      font-size: 30px;
+      width: 80%;
+      text-align: center;
+      height: 80px;
+      margin-bottom: 100px;
+      border: none;
+      border-bottom: 1px solid gray;
+
+    }
+  }
+  .word_boxes {
+    margin: $located_center;
+    .word_set {
+      font-size: 20px;
+      margin-bottom: 20px;
+      background-color: white;
+      .word_box__left {
+        float: left;
+        width: 49%;
+        padding: 30px 0 30px 50px;
+        .word_box {
+          @include word_box;
+        }
+      }
+      .word_box__right {
+        float: right;
+        width: 49%;
+        padding: 30px 50px 30px 0;
+        .word_box {
+          @include word_box;
+        }
+      }
+
+      input[type="text"] {
+        font-size: 30px;
+        outline: 0px;
+        border: 0px;
+      }
+    }
+    .word_set:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+  .add_card {
+    text-decoration: none;
+    &__wrapper {
+      font-size: 30px;
+      background-color: white;
+      margin: $located_center;
+      line-height: 120px;
+      text-align: center;
+      span {
+        border-bottom: 5px solid #00FFFF;
+      }
+    }
+    &__wrapper:hover {
+        opacity: 0.8;
+    }
+  }
+  .add_card:active {
+    position: relative;
+    top: 6px;
+  }
+  .button--create-subject {
+    padding: 30px 120px;;
+    background-color: #00FFFF;
+    color: white;
+    float: right;
+    font-size: 30px;
+    margin: 30px 100px 30px 0;
+  }
+}
+.subject_new_display:after {
+  content: "";
+  display: block;
+  clear: both;
+}
