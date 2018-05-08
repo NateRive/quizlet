@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: quizlet_production
-  username: quizlet
+  username: root
   password: <%= ENV['QUIZLET_DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
