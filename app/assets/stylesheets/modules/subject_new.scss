@@ -24,17 +24,28 @@ $located_center: 0 60px;
       font-size: 20px;
       margin-bottom: 20px;
       background-color: white;
+      .word_box__index {
+        float: left;
+        width: 8%;
+        font-weight: bold;
+        color: gray;
+        text-align: center;
+        line-height: 138px;
+        .fa-trash:hover {
+          color: #FFCC33;
+        }
+      }
       .word_box__left {
         float: left;
-        width: 49%;
-        padding: 30px 0 30px 50px;
+        width: 45%;
+        padding: 30px 0 30px 0px;
         .word_box {
           @include word_box;
         }
       }
       .word_box__right {
         float: right;
-        width: 49%;
+        width: 45%;
         padding: 30px 50px 30px 0;
         .word_box {
           @include word_box;

@@ -1,4 +1,8 @@
 class Word < ApplicationRecord
   belongs_to :subject
-  validates :flip, presence: true
+  validates :face_or_flip, presence: true
+
+  def face_or_flip
+    face.presence or flip.presence
+  end
 end
