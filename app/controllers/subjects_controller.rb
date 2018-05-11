@@ -8,7 +8,6 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    binding.pry
     subject = Subject.new(create_params)
     if subject.save
       redirect_to  subjects_path, notice: "学習セットを作成しました。"
