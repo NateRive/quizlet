@@ -11,11 +11,16 @@
   <div class="right-content">
     <!-- ここにsubjects一覧 -->
     <h1>科目一覧</h1>
-    <%= link_to do %>
-      <div class="subject">
-        <p>何用語</p>
-        <p>subject名</p>
-      </div>
+    <% @subjects.each do |subject| %>
+      <%= link_to subject_path(subject.id) do %>
+        <div class="subject-box">
+          <span><%= subject.words.count %>用語</span>
+          <span><%= subject.user.name %></span>
+          <div class="">
+            <%= subject.title %>
+          </div>
+        </div>
+        <% end %>
       <% end %>
   </div>
 </div>

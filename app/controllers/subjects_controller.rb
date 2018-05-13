@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
+  before_action :set_subject, only: [:show, :edit, :update]
   def index
+    @subjects = Subject.where("user_id = ?", current_user.id).includes(:user)
   end
 
   def new
@@ -20,8 +22,24 @@ class SubjectsController < ApplicationController
 
   end
 
+  def show
+
+  end
+
+  def edit
+  end
+
+  def update
+    @subject.update(create_params)
+    redirect_to "/"
+  end
+
   private
   def create_params
-    params.require(:subject).permit(:title, words_attributes: [:face, :flip]).merge(user_id: current_user.id)
+    params.require(:subject).permit(:title, words_attributes: [:face, :flip, :id, :_destroy]).merge(user_id: current_user.id)
+  end
+
+  def set_subject
+    @subject = Subject.find(params[:id])
   end
 end

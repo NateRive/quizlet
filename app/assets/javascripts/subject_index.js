@@ -1,27 +1,28 @@
 $(function() {
+  var appendIndex = 6
   function appendHTML() {
-    var count = $(".word_boxes").data("count")
+    var count = $(".word_set").last().find(".word_box__index").text();
     var html = `
     <div class="word_set">
       <span class="word_box__index">
-        ${count}
+        ${ Number(count) + 1 }
       </span>
        <div class="word_box__left">
-         <input class="word_box" type="text" name="subject[words_attributes][${count}][face]"/>
+         <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][face]"/>
          表
        </div>
        <div class="word_box__right">
-         <input class="word_box" type="text" name="subject[words_attributes][${count}][flip]"/>
+         <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][flip]"/>
          裏
        </div>
      </div>
     `
     $(".word_boxes").data("count", count + 1);
+    appendIndex += 1;
     return html
   }
 
   $(".add_card__wrapper").on("click", function() {
-    console.log("aa");
     var html = appendHTML()
     $(".word_boxes").append(html);
   });
@@ -34,25 +35,26 @@ $(function() {
     });
 
     $(document).on("mouseleave", ".word_set", function() {
-      var prevIndex = $(this).prev().find(".word_box__index").text();
-      $(this).find("i").remove();
+      var tmp = $(this).prevAll(".word_set")[0]
+      var prevIndex = $(tmp).find(".word_box__index").text();
+      $(this).find(".word_box__index").empty();
       $(this).find(".word_box__index").text(Number(prevIndex) + 1);
     });
   }
 
   changeTrash();
+  console.log($(".word_set").last());
 
   $(document).on("click", ".fa-trash", function() {
     var wordSet = $(this).parent().parent();
-    if ($(wordSet).next()[0]) {
-      var prevIndex = $(wordSet).prev().find(".word_box__index").text();
-      $(wordSet).remove();
-      $(".word_box__index").each(function(index, value) {
-        if (index >= prevIndex) {
-          var tmp = $(value).text()
-          $(value).text(tmp - 1);
-        }
+    if ($(wordSet).nextAll(".word_set")[0]) {
+      $(wordSet).nextAll(".word_set").each(function(index, value) {
+          var tmp = $(value).find(".word_box__index").text()
+          $(value).find(".word_box__index").text(tmp - 1);
+          $(wordSet).remove();
       });
+    } else {
+      $(wordSet).remove();
     }
   });
 });

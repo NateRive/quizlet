@@ -85,12 +85,11 @@ $located_center: 0 60px;
     top: 6px;
   }
   .button--create-subject {
-    padding: 30px 120px;;
-    background-color: #00FFFF;
-    color: white;
+    @include button;
     float: right;
-    font-size: 30px;
-    margin: 30px 100px 30px 0;
+  }
+  .button--create-subject:hover {
+    background-color: #FFCC33;
   }
 }
 .subject_new_display:after {
