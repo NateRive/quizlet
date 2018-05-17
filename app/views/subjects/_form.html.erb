@@ -1,0 +1,45 @@
+<div class="subject_new_display">
+  <%= form_for @subject do |f| %>
+  <div class="make-subject">
+    <% if @subject.title.nil? %>
+      <h2>新しい学習セットを作成する</h2>
+    <% end %>
+    <%= f.text_field :title %><br>
+  </div>
+  <div class="word_boxes" data-count="5">
+    <% @subject.words.each_with_index do |word, index| %>
+      <%= f.fields_for :words, word do |s| %>
+        <div class="word_set">
+          <span class="word_box__index">
+            <%= index + 1 %>
+          </span>
+          <div class="word_box__left">
+            <%= s.text_field :face, class: "word_box" %>
+            表
+          </div>
+          <div class="word_box__right">
+            <div class="word_box__right--content">
+              <%= s.text_field :flip, class: "word_box" %>
+              <label>
+                <i class="fa fa-picture-o"  aria-hidden="true"></i>
+                <%= s.file_field :image, class: "image-picture" %>
+              </label>
+            </div>
+            裏
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+    <div class="add_card">
+      <div class="add_card__wrapper">
+        <span>カードを追加</span>
+      </div>
+    </a>
+    <% if @subject.title.nil? %>
+      <%= f.submit "作成する", class: "button--create-subject"%>
+    <% else %>
+      <%= f.submit "編集する", class: "button--create-subject"%>
+    <% end %>
+  <% end %>
+</div>

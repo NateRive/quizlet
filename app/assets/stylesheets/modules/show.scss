@@ -17,26 +17,53 @@
   .saved-word {
     width: 100%;
     background-color: white;
-    min-height: 80px;
+    box-sizing: content-box;
+    min-height: 100px;
     padding: 20px 40px;
     margin-bottom: 25px;
     span {
       display: inline-block;
       height: 40px;
     }
-    &__face {
+    &__left {
       width: 30%;
-      border-right: 1px solid gray;
       font-size: 28px;
+      float: left;
     }
-    &__flip {
+    &__right {
+      border-left: 1px solid gray;
       padding-left: 50px;
+      line-height: 100px;
       width: 60%;
       font-size: 15px;
+      float: right;
+      height: 100px;
+      position: relative;
+      &__flip {
+        float: left;
+      }
+      &__image {
+        float: right;
+        margin-right: 50px;
+        img {
+          height: 100px;
+          width: 120px;
+        }
+      }
+      &__edit {
+        float: right;
+      }
     }
-    &__edit {
-
+    &_right:after {
+      display: block;
+      content: "";
+      clear: both;
     }
+  }
+  .saved-word:after {
+    display: block;
+    content: "";
+    clear: both;
   }
   a {
     text-decoration: none;

@@ -1,8 +1,5 @@
 class Word < ApplicationRecord
   belongs_to :subject
-  validates :face_or_flip, presence: true
+  mount_uploader :image, ImageUploader
 
-  def face_or_flip
-    face.presence or flip.presence
-  end
 end

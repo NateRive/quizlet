@@ -50,6 +50,23 @@ $located_center: 0 60px;
         .word_box {
           @include word_box;
         }
+        &--content {
+          position: relative;
+          .fa-picture-o {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+          }
+          .fa-picture-o:hover {
+            color: #FFD700;
+          }
+          .fa-picture-o:active {
+            top: 15px;
+          }
+          .image-picture {
+            display: none;
+          }
+        }
       }
 
       input[type="text"] {
@@ -77,6 +94,7 @@ $located_center: 0 60px;
       }
     }
     &__wrapper:hover {
+      cursor: pointer;
         opacity: 0.8;
     }
   }

@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
   end
 
   def create
+    binding.pry
     subject = Subject.new(create_params)
     if subject.save
       redirect_to  subjects_path, notice: "学習セットを作成しました。"
@@ -19,7 +20,6 @@ class SubjectsController < ApplicationController
       render :new
       # もともと書いていた内容を保持するコードを書く！
     end
-
   end
 
   def show
@@ -30,13 +30,15 @@ class SubjectsController < ApplicationController
   end
 
   def update
+    binding.pry
     @subject.update(create_params)
+    binding.pry
     redirect_to "/"
   end
 
   private
   def create_params
-    params.require(:subject).permit(:title, words_attributes: [:face, :flip, :id, :_destroy]).merge(user_id: current_user.id)
+    params.require(:subject).permit(:title, words_attributes: [:face, :flip, :image, :id]).merge(user_id: current_user.id)
   end
 
   def set_subject

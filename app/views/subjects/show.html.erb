@@ -13,9 +13,18 @@
 <div class="bottom-content">
   <% @subject.words.each do |word| %>
     <div class="saved-word">
-      <span class="saved-word__face"><%= word.face %></span>
-      <span class="saved-word__flip"><%= word.flip %></span>
-      <span class="saved-word__edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+      <div class="saved-word__left">
+        <span class=""><%= word.face %></span>
+      </div>
+      <div class="saved-word__right">
+        <span class="saved-word__right__flip">
+          <%= word.flip %>
+        </span>
+        <span class="saved-word__right__edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+        <% if word.image_url %>
+          <span class="saved-word__right__image"><%= image_tag word.image_url %></span>
+        <% end %>
+      </div>
     </div>
   <% end %>
 

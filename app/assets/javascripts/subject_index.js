@@ -1,5 +1,5 @@
 $(function() {
-  var appendIndex = 6
+  var appendIndex = $(".word_set").length + 1
   function appendHTML() {
     var count = $(".word_set").last().find(".word_box__index").text();
     var html = `
@@ -12,10 +12,16 @@ $(function() {
          表
        </div>
        <div class="word_box__right">
-         <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][flip]"/>
+         <div class="word_box__right--content">
+           <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][flip]" />
+           <label>
+             <i class="fa fa-picture-o"  aria-hidden="true"></i>
+             <input class="image-picture" type="file" name="subject[words_attributes][${ appendIndex }][image]" />
+           </label>
+         </div>
          裏
        </div>
-     </div>
+    </div>
     `
     $(".word_boxes").data("count", count + 1);
     appendIndex += 1;
@@ -43,7 +49,6 @@ $(function() {
   }
 
   changeTrash();
-  console.log($(".word_set").last());
 
   $(document).on("click", ".fa-trash", function() {
     var wordSet = $(this).parent().parent();
