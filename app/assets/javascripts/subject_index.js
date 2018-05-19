@@ -1,5 +1,5 @@
 $(function() {
-  var appendIndex = $(".word_set").length + 1
+  var appendIndex = $(".word_set").length
   function appendHTML() {
     var count = $(".word_set").last().find(".word_box__index").text();
     var html = `
@@ -8,15 +8,15 @@ $(function() {
         ${ Number(count) + 1 }
       </span>
        <div class="word_box__left">
-         <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][face]"/>
+         <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][face]" id="subject_words_attributes_${ appendIndex }_face" />
          表
        </div>
        <div class="word_box__right">
          <div class="word_box__right--content">
-           <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][flip]" />
+           <input class="word_box" type="text" name="subject[words_attributes][${ appendIndex }][flip]" id="subject_words_attributes_${ appendIndex }_flip"/>
            <label>
              <i class="fa fa-picture-o"  aria-hidden="true"></i>
-             <input class="image-picture" type="file" name="subject[words_attributes][${ appendIndex }][image]" />
+             <input class="image-picture" type="file" name="subject[words_attributes][${ appendIndex }][image]" id="subject_words_attributes_${ appendIndex }_image" />
            </label>
          </div>
          裏

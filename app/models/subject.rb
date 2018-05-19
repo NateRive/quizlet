@@ -6,8 +6,10 @@ class Subject < ApplicationRecord
 
   def reject_both_blank(attributes)
     if attributes[:id]
-      attributes.merge!(_destroy: "1") if attributes[:face].blank? and attributes[:flip].blank? and attributes[:image].blank?
-      !attributes[:face].blank? and attributes[:flip].blank?
+      if attributes[:face].blank? and attributes[:flip].blank? and attributes[:image].blank?
+        attributes.merge!(_destroy: "1")
+        !attributes[:face].blank? and attributes[:flip].blank? and attributes[:image].blank?
+      end
     else
       attributes[:face].blank? and attributes[:flip].blank? and attributes[:image].blank?
     end
