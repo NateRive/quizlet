@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <%= render partial: "subjects/leftindex" %>
+  <div class="right-content">
+    <div class="right-content__info">
+      <div class="right-content__info__top">
+        <span>3セット</span>
+        <span>作成者・<%= current_user.name %></span>
+        <span id="open__folder-modal"><i class="fa fa-3x fa-plus" aria-hidden="true"></i></span>
+      </div>
+      <div class="right-content__info__second">
+
+      </div>
+    </div>
+    <!-- ここにsubjects一覧 -->
+    <% @subjects.each do |subject| %>
+      <%= link_to subject_path(subject.id) do %>
+        <div class="subject-box">
+          <span><%= subject.words.count %>用語</span>
+          <span><%= subject.user.name %></span>
+          <div class="">
+            <%= subject.title %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
+<div class="modal-form">
+  <div class="modal-header">
+    <div class="modal-header-wrapper">
+        <h3>新規フォルダを作成</h3>
+        <span>×</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-main">
+      <%= form_for @folder  do |f| %>
+        <div class="modal-body-main__input">
+          <%= f.text_field :title, placeholder: "タイトル" %>
+        </div>
+        <%= f.submit "フォルダを作成する", class: "submit-folder" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal-bg">
+</div>
+
+<div class="folder__modal-form">
+  <div class="folder__modal-header">
+    <div class="folder__modal-header__wrapper">
+      <span class="left">学習セットを追加</span>
+      <span class="right"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </div>
+  </div>
+  <div class="folder__modal-body">
+    <%= form_for @folder do |f| %>
+      <% @all_subjects.each do |subject| %>
+        <div class="subject-title" data-id= <%= subject.id %>>
+          <div class="subject-title__wrapper">
+              <span class="left"><%= subject.title %><br></span>
+              <% if subject.folders.ids.include?(@folder.id) %>
+                <span class="right added">ー</span>
+                <%= f.hidden_field :subject_ids, value: subject.id, multiple: true %>
+              <% else %>
+                <span class="right nonadded">+</span>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+      <%= f.submit "確定する", class:"add-subject" %>
+    <% end %>
+  </div>
+</div>
+<div class="modal-bg">
+
+</div>

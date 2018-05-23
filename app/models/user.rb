@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :folders, dependent: :destroy
   has_many :subjects, dependent: :destroy
+  mount_uploader :avatar, ImageUploader
 end

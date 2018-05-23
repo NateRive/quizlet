@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516101716) do
+ActiveRecord::Schema.define(version: 20180520094021) do
 
   create_table "folders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["title"], name: "index_folders_on_title", unique: true
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "subject_folders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "folder_id"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_subject_folders_on_folder_id"
+    t.index ["subject_id"], name: "index_subject_folders_on_subject_id"
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180516101716) do
   create_table "words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "face", null: false
     t.text "flip"
-    t.string "image"
+    t.string "image", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "subject_id"
@@ -59,6 +70,8 @@ ActiveRecord::Schema.define(version: 20180516101716) do
   end
 
   add_foreign_key "folders", "users"
+  add_foreign_key "subject_folders", "folders"
+  add_foreign_key "subject_folders", "subjects"
   add_foreign_key "subjects", "folders"
   add_foreign_key "subjects", "users"
   add_foreign_key "words", "subjects"

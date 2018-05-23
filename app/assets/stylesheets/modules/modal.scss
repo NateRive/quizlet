@@ -1,0 +1,138 @@
+.modal-form {
+  display: none;
+  width: 700px;
+  // height: 300px;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #666666;
+  position: fixed;
+  z-index: 2;
+  top: 100px;
+  .modal-header {
+    &-wrapper {
+      h3 {
+        float: left;
+      }
+      span {
+        font-size: 50px;
+        float: right;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+      span:hover {
+        color: $yellow_like;
+      }
+    }
+  }
+  .modal-body {
+    text-align: center;
+    #folder_title {
+      font-size: 30px;
+    }
+    .submit-folder {
+      display: block;
+      @include button;
+      margin: 30px auto;
+    }
+  }
+}
+
+.modal-bg {
+  display:none;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.5);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 1;
+}
+
+.folder__modal-form {
+  font-size: 30px;
+  display: none;
+  width: 800px;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #666666;
+  position: fixed;
+  z-index: 2;
+  .folder__modal-header {
+    color: white;
+    height: 102px;
+    background-color: #4169E1;
+    &__wrapper {
+      line-height: 102px;
+      padding: 0 30px;
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+  }
+  .folder__modal-header:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+  .folder__modal-body {
+    background-color: #EEEEEE;
+    padding: 30px 30px;
+    .subject-title {
+      background-color: white;
+      margin-bottom: 10px;
+      height: 90px;
+      position: relative;
+      &__wrapper {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        padding: 0 20px;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        .left {
+          float: left;
+        }
+        .right {
+          display: inline-block;
+          width: 60px;
+          float: right;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          font-size: 30px;
+          border: 1px solid gray;
+          cursor: pointer;
+        }
+        .right:hover {
+          background-color: $yellow_like;
+        }
+        .nonadded {
+          color: blue;
+        }
+      }
+      &__wrapper:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+    .add-subject {
+      display: block;
+      @include button;
+      margin: 20px auto;
+    }
+    .add-subject:hover {
+      background-color: $yellow_like;
+    }
+  }
+}

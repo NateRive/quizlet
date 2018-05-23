@@ -4,10 +4,11 @@
     <span><%= @subject.user.name %></span>
   </div>
   <h1><%= @subject.title %></h1>
-  <p>〜〜フォルダの中に入っています。</p>
-  <div class="">
-    編集用のアイコンなどほか多数
-  </div>
+  <%= link_to subject_words_path(@subject)  do %>
+    <div id="vocaburary">
+      <p>単語カード</p>
+    </div>
+  <% end %>
 </div>
 
 <div class="bottom-content">

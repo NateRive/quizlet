@@ -1,5 +1,5 @@
 <div class="subject_new_display">
-  <%= form_for @subject do |f| %>
+  <%= form_for @subject, html: { multipart: true } do |f| %>
   <div class="make-subject">
     <% if @subject.title.nil? %>
       <h2>新しい学習セットを作成する</h2>

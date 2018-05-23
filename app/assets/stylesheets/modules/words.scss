@@ -1,0 +1,30 @@
+.word__wrapper {
+  height: 100%;
+  .word__left-content {
+    float: left;
+    height: calc(100% - 100px);
+    width: 20%;
+    padding: 30px 20px;
+    border-right: 1px solid gray;
+    &__option {
+      border: 1px solid gray;
+      padding: 10px 30px;
+      margin-bottom: 20px;
+      color: #81F7F3;
+      .option__wrapper {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        span {
+
+        }
+      }
+    }
+  }
+  .word__right-content {
+    float: left;
+    height: calc(100% - 100px);
+    width: 80%;
+    background-color: #f5f5f5;
+  }
+}

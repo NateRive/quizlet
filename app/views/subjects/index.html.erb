@@ -1,13 +1,6 @@
 
 <div class="wrapper">
-  <div class="left-content">
-    <!-- ここにフォルダ一覧 -->
-    <ul>
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
-    </ul>
-  </div>
+  <%= render partial: "leftindex" %>
   <div class="right-content">
     <!-- ここにsubjects一覧 -->
     <h1>科目一覧</h1>
@@ -23,4 +16,24 @@
         <% end %>
       <% end %>
   </div>
+</div>
+<div class="modal-form">
+  <div class="modal-header">
+    <div class="modal-header-wrapper">
+        <h3>新規フォルダを作成</h3>
+        <span>×</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="modal-body-main">
+      <%= form_for @folder  do |f| %>
+        <div class="modal-body-main__input">
+          <%= f.text_field :title, placeholder: "タイトル" %>
+        </div>
+        <%= f.submit "フォルダを作成する", class: "submit-folder" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal-bg">
 </div>

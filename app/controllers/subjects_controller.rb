@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update]
   def index
     @subjects = Subject.where("user_id = ?", current_user.id).includes(:user)
+    @folder = Folder.new
   end
 
   def new
@@ -10,7 +11,6 @@ class SubjectsController < ApplicationController
   end
 
   def create
-    binding.pry
     subject = Subject.new(create_params)
     if subject.save
       redirect_to  subjects_path, notice: "学習セットを作成しました。"
@@ -30,9 +30,7 @@ class SubjectsController < ApplicationController
   end
 
   def update
-    binding.pry
     @subject.update(create_params)
-    binding.pry
     redirect_to "/"
   end
 

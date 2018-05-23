@@ -1,0 +1,16 @@
+<div class="left-content">
+  <!-- ここにフォルダ一覧 -->
+  <p id="your-folder">あなたのフォルダ</p>
+  <% current_user.folders.each do |folder| %>
+    <%= link_to  folder_path(folder) do %>
+      <div class="list-folders">
+        <span><i class="fa fa-folder" aria-hidden="true"></i></span>
+        <span><%= folder.title %></span>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="create-folder">
+    <span><i class="fa fa-plus" aria-hidden="true"></i></span>
+    <span>フォルダを作成する</span>
+  </div>
+</div>
