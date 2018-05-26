@@ -1,4 +1,4 @@
-<div class="word__wrapper">
+<div class="word__wrapper" data-word='<%= @words.pluck(:id, :face, :image, :flip) %>'>
   <div class="word__left-content">
     <div class="word__left-content__option">
       <span class="option__wrapper">
@@ -14,6 +14,26 @@
     </div>
   </div>
   <div class="word__right-content">
-
+    <div class="word-square">
+      <div class="face-side now">
+        <div class="face-side__wrapper">
+          <span class="face-side__wrapper__sentence">
+            <%= @words.first.face %>
+          </span>
+        </div>
+      </div>
+      <div class="flip-side">
+        <div class="flip-side__wrapper">
+            <img src="<%= @words.first.image %>" class="flip-side__wrapper__image">
+          <span class="flip-side__wrapper__sentence">
+            <%= @words.first.flip %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="pagenation">
+      <span class="former"><i class="fa fa-3x fa-caret-left" aria-hidden="true"></i></span>
+      <span class="later"><i class="fa fa-3x fa-caret-right" aria-hidden="true"></i></span>
+    </div>
   </div>
 </div>

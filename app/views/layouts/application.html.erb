@@ -24,7 +24,7 @@
         <span>検索する</span>
         <%= link_to "作成する" ,  new_subject_path  %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <span id="username"><%= current_user.name %></span> 
+        <span id="username"><%= current_user.name %></span>
         <span id="avatar"><img src="<%= current_user.avatar %>"></span>
       <% end %>
     </header>

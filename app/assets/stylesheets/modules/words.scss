@@ -2,29 +2,90 @@
   height: 100%;
   .word__left-content {
     float: left;
-    height: calc(100% - 100px);
-    width: 20%;
+    height: 100%;
+    width: 15%;
     padding: 30px 20px;
-    border-right: 1px solid gray;
     &__option {
-      border: 1px solid gray;
+      border: 2px solid #E6E6E6;
       padding: 10px 30px;
       margin-bottom: 20px;
       color: #81F7F3;
       .option__wrapper {
+        height: 36px;
+        line-height: 36px;
         display: block;
         margin: 0 auto;
         text-align: center;
         span {
-
         }
       }
     }
   }
   .word__right-content {
     float: left;
-    height: calc(100% - 100px);
-    width: 80%;
+    height: 100%;
+    width: 85%;
     background-color: #f5f5f5;
+    .word-square {
+        margin: 50px auto 0;
+        height: 700px;
+        padding: 20px;
+        width:  1000px;
+        background-color: white;
+        position: relative;
+        .face-side {
+          display: none;
+          position: absolute;
+          height: calc(100% - 40px);
+          width: calc(100% - 40px);
+          &__wrapper {
+            line-height: 660px;
+            &__sentence {
+              font-size: 40px;
+              position: relative;
+              left: 440px;
+            }
+          }
+        }
+        .flip-side {
+          display: none;
+          position: absolute;
+          height: calc(100% - 40px);
+          width: calc(100% - 40px);
+          &__wrapper {
+            line-height: 660px;
+            text-align: center;
+            &__image {
+              margin-right: 50px;
+            }
+            &__sentence {
+              font-size: 25px;
+            }
+          }
+        }
+        .now {
+          display: block;
+        }
+    }
+    .pagenation {
+      text-align: center;
+      color: white;
+      span {
+        display: inline-block;
+        background-color: #81F7F3;
+      }
+      .former {
+        margin-right: 50px;
+      }
+      .former:hover {
+        background-color: $yellow_like;
+      }
+      .later {
+        margin-left: 50px;
+      }
+      .later:hover {
+        background-color: $yellow_like;
+      }
+    }
   }
 }
