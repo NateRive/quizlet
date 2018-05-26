@@ -40,10 +40,9 @@
           width: calc(100% - 40px);
           &__wrapper {
             line-height: 660px;
+            text-align: center;
             &__sentence {
               font-size: 40px;
-              position: relative;
-              left: 440px;
             }
           }
         }
@@ -74,13 +73,13 @@
         display: inline-block;
         background-color: #81F7F3;
       }
-      .former {
+      .page-left {
         margin-right: 50px;
       }
       .former:hover {
         background-color: $yellow_like;
       }
-      .later {
+      .page-right {
         margin-left: 50px;
       }
       .later:hover {

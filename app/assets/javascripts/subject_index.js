@@ -1,4 +1,9 @@
 $(function() {
+  $(document).on("keypress", "input:not(.allow_submit)", function(e) {
+    return e.which !== 13;
+    // キーコードが13のエンターキーのみfalseが入るようにすることで、エンター以外のキーを無効にしない
+  });
+
   var appendIndex = $(".word_set").length
   function appendHTML() {
     var count = $(".word_set").last().find(".word_box__index").text();
