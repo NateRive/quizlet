@@ -10,7 +10,8 @@ class FoldersController < ApplicationController
   end
 
   def show
-    @folder = Folder.find(params[:id])
+    @addfolder = Folder.find(params[:id])
+    @folder = Folder.new
     @all_subjects = current_user.subjects
     @subjects = Folder.find(params[:id]).subjects
   end

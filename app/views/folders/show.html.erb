@@ -55,12 +55,12 @@
     </div>
   </div>
   <div class="folder__modal-body">
-    <%= form_for @folder do |f| %>
+    <%= form_for @addfolder do |f| %>
       <% @all_subjects.each do |subject| %>
         <div class="subject-title" data-id= <%= subject.id %>>
           <div class="subject-title__wrapper">
               <span class="left"><%= subject.title %><br></span>
-              <% if subject.folders.ids.include?(@folder.id) %>
+              <% if subject.folders.ids.include?(@addfolder.id) %>
                 <span class="right added">ー</span>
                 <%= f.hidden_field :subject_ids, value: subject.id, multiple: true %>
               <% else %>
