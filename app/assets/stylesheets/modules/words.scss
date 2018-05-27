@@ -16,9 +16,10 @@
         display: block;
         margin: 0 auto;
         text-align: center;
-        span {
-        }
       }
+    }
+    &__option:hover {
+      background-color: $yellow_like;
     }
   }
   .word__right-content {

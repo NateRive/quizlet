@@ -5,13 +5,40 @@ $(function() {
     var index = 0
     var info = []
 
-    if (index == 0) {
-      console.log("aa");
-      $(".former").css("background-color", "gray")
+    function pageChangeRemove() {
+      $(".face-side").removeClass("now");
+      $(".flip-side").removeClass("now");
+      if (words[index][2]) {
+        $(".flip-side__wrapper__image").attr("src", "");
+      }
     }
 
+    function pageChangeWork() {
+      if (words[index][2]) {
+        var url = "/uploads/word/image/" + words[index][0] + "/" + words[index][2]
+        $(".flip-side__wrapper__image").attr("src", url);
+      }
+      $(".face-side__wrapper__sentence").text(words[index][1]);
+      $(".flip-side__wrapper__sentence").text(words[index][3]);
+    }
+
+    function faceOrFlip() {
+      if (info[index] == "face") {
+        $(".face-side").addClass("now");
+      } else {
+        $(".flip-side").addClass("now");
+      }
+    }
+
+    function formerGray() {
+      if (index == 0) {
+        $(".former").css("background-color", "gray")
+      }
+    }
+
+    formerGray();
+
     $(".word-square").on("click", function () {
-      // $(this).quickFlip
       if ($(".face-side").hasClass("now")) {
         $(".face-side").removeClass("now");
         $(".flip-side").addClass("now");
@@ -29,18 +56,15 @@ $(function() {
       }
       var FaceFlip = $(".now").hasClass("face-side") ? "face" : "flip"
       info[index] = FaceFlip
+      pageChangeRemove();
       index += 1;
-      $(".face-side").removeClass("now");
-      $(".flip-side").removeClass("now");
-      $(".face-side__wrapper__sentence").text(words[index][1]);
-      if (words[index][2]) {
-        var url = "/uploads/word/image/" + words[index][0] + "/" + words[index][2]
-        $(".flip-side__wrapper__image").attr("src", url);
-      }
-      $(".flip-side__wrapper__sentence").text(words[index][3]);
+      pageChangeWork();
+      console.log(info);
+      console.log(info[index]);
       if (info[index] == null || info[index] == "face") {
           $(".face-side").addClass("now");
-      } else if (info[index == "flip"]) {
+      } else if (info[index] == "flip") {
+        console.log("passed");
         $(".flip-side").addClass("now");
       }
       if (index == words.length - 1) {
@@ -54,22 +78,25 @@ $(function() {
       } else if (index == words.length - 1) {
         $(".later").css("background-color", "#81F7F3");
       }
+      var FaceFlip = $(".now").hasClass("face-side") ? "face" : "flip"
+      info[index] = FaceFlip
+      pageChangeRemove();
       index -= 1;
-      $(".face-side").removeClass("now");
-      $(".flip-side").removeClass("now");
-      $(".face-side__wrapper__sentence").text(words[index][1]);
-      if (words[index][2]) {
-        var url = "/uploads/word/image/" + words[index][0] + "/" + words[index][2]
-        $(".flip-side__wrapper__image").attr("src", url);
-      } else if (words[index + 1][2]) {
-        $(".flip-side__wrapper__image").attr("src", "");
+      pageChangeWork();
+      faceOrFlip();
+      formerGray();
+    });
+
+    $(".random").on("click", function() {
+      pageChangeRemove();
+      for(var i = words.length - 1; i > 0; i--)　{
+        var r = Math.floor(Math.random() * (i + 1));
+        var tmp = words[i];
+        words[i] = words[r];
+        words[r] = tmp;
       }
-      $(".flip-side__wrapper__sentence").text(words[index][3]);
-      if (info[index] == "face") {
-        $(".face-side").addClass("now");
-      } else {
-        $(".flip-side").addClass("now");
-      }
+      pageChangeWork();
+      $(".face-side").addClass("now");
     });
   }
 });
